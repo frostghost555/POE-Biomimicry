@@ -37,10 +37,11 @@ print("\033[2J")
 
 # ------------------------------------------
 # 
-#   Project:      Biomimicry Silly Walks Inchworm
+#   Project:      Biomimicry Silly Walks Crawler
 #   Author:       PLTW Engineering & Student
 #   Description:  Crawls continuously using linkage motion until
-#                 the front bumper hits an obstacle.
+#                 the front bumper hits an obstacle, then stops 
+#                 and emits an insect warning buzz.
 # 
 # ------------------------------------------
 
@@ -54,3 +55,10 @@ while not bumper_a.pressing():
 
 # Stop moving once the bumper switch contacts an obstacle
 drivetrain.stop()
+
+# Biomimicry Defense Buzz: Play a 3-pitch insect warning sound
+brain.play_note(1, 7, 100)
+wait(50, MSEC)
+brain.play_note(1, 8, 100)
+wait(50, MSEC)
+brain.play_note(1, 9, 150)

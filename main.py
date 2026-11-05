@@ -40,7 +40,8 @@ print("\033[2J")
 #   Project:      Biomimicry Silly Walks Crawler
 #   Author:       PLTW Engineering & Student
 #   Description:  Crawls continuously using linkage motion until
-#                 the front bumper hits an obstacle, then stops 
+#                 the front bumper hits an obstacle, then stops,
+#                 flashes the screen red, prints an alert, 
 #                 and emits an insect warning buzz.
 # 
 # ------------------------------------------
@@ -55,6 +56,11 @@ while not bumper_a.pressing():
 
 # Stop moving once the bumper switch contacts an obstacle
 drivetrain.stop()
+
+# Visual Alarm: Flash the Brain screen red and output status text
+brain.screen.set_fill_color(Color.RED)
+brain.screen.draw_rectangle(0, 0, 480, 240)
+print("BUG ALERT: Obstacle hit!")
 
 # Biomimicry Defense Buzz: Play a 3-pitch insect warning sound
 brain.play_note(1, 7, 100)

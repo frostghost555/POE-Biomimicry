@@ -6,9 +6,15 @@ import math
 # Brain should be defined by default
 brain = Brain()
 
-# Robot configuration code
-left_drive_smart = Motor(Ports.PORT1, GearSetting.RATIO_18_1, False)
-right_drive_smart = Motor(Ports.PORT2, GearSetting.RATIO_18_1, True)
+# Robot configuration code for 4 Motors
+left_motor_a = Motor(Ports.PORT1, GearSetting.RATIO_18_1, False)
+left_motor_b = Motor(Ports.PORT3, GearSetting.RATIO_18_1, False)
+left_drive_smart = MotorGroup(left_motor_a, left_motor_b)
+
+right_motor_a = Motor(Ports.PORT2, GearSetting.RATIO_18_1, True)
+right_motor_b = Motor(Ports.PORT4, GearSetting.RATIO_18_1, True)
+right_drive_smart = MotorGroup(right_motor_a, right_motor_b)
+
 drivetrain = DriveTrain(left_drive_smart, right_drive_smart, 319.19, 295, 40, MM, 1)
 
 # Sensor configuration: Bumper Switch plugged into 3-Wire Port A
@@ -37,10 +43,10 @@ print("\033[2J")
 
 # ------------------------------------------
 # 
-#   Project:      Biomimicry Silly Walks Crawler
+#   Project:      Biomimicry Silly Walks Crawler (4-Motor)
 #   Author:       PLTW Engineering & Student
-#   Description:  Crawls continuously using linkage motion until
-#                 the front bumper hits an obstacle, then stops,
+#   Description:  Crawls continuously using a 4-motor linkage motion
+#                 until the front bumper hits an obstacle, then stops,
 #                 flashes the screen red, prints an alert, 
 #                 and emits an insect warning buzz.
 # 
